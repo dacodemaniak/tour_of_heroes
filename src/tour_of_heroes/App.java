@@ -3,6 +3,7 @@
  */
 package tour_of_heroes;
 
+import tour_of_heroes.collection.PersonnageRepository;
 import tour_of_heroes.models.Personnage;
 
 /**
@@ -28,22 +29,32 @@ public class App {
 	 * d'un objet de type App
 	 */
 	public App() {
+		PersonnageRepository personnages = new PersonnageRepository();
+		
 		// Créer un premier personnage
 		Personnage batman = new Personnage("Batman", 45);
+		personnages.addPersonnage(batman);
 		
 		// Créer un autre personnage
 		Personnage superman = new Personnage("Superman", 25);
+		personnages.addPersonnage(superman);
 		
 		// Création de Joker
 		Personnage joker = new Personnage("Joker", 99);
+		personnages.addPersonnage(joker);
 		
 		// Créer IronMan
 		Personnage ironman = new Personnage("Ironman", 35);
 		
-		// Les personnages vont dire bonjour
-		System.out.println(batman.ditBonjour());
-		System.out.println(superman.ditBonjour());
-		System.out.println(joker.ditBonjour());
+		personnages.addPersonnage(ironman);
+		personnages.addPersonnage(ironman);
+		
+		System.out.println(personnages);
+		
+		// Tous les personnages vont dire bonjour
+		for (Personnage personnage : personnages.getCollection()) {
+			System.out.println(personnage.ditBonjour());
+		}
 	}
 
 }
