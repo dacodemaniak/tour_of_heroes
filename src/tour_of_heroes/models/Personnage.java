@@ -7,16 +7,16 @@ package tour_of_heroes.models;
  * @author Aelion
  *
  */
-public class Personnage {
+public abstract class Personnage {
 	/**
 	 * Nom du personnage
 	 */
-	private String nom;
+	protected String nom;
 	
 	/**
 	 * Age du personnage
 	 */
-	private int age;
+	protected int age;
 	
 	
 	public Personnage() {}
@@ -64,11 +64,5 @@ public class Personnage {
 		return this.nom;
 	}
 	
-	public String ditBonjour() {
-		if (this.age == 0) {
-			return "Bonjour, je m'appelle " + this.nom;
-		}
-		
-		return "Bonjour, je m'appelle " + this.nom + " et j'ai " + this.age + " ans";
-	}
+	public abstract String ditBonjour();
 }
