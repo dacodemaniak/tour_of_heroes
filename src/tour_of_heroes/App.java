@@ -30,19 +30,15 @@ public class App {
 	public App() {
 		// Créer un premier personnage
 		Personnage batman = new Personnage("Batman", 45);
-		batman.isMechant(false);
 		
 		// Créer un autre personnage
 		Personnage superman = new Personnage("Superman", 25);
-		superman.isMechant(false);
 		
 		// Création de Joker
 		Personnage joker = new Personnage("Joker", 99);
-		joker.isMechant(true);
 		
 		// Créer IronMan
 		Personnage ironman = new Personnage("Ironman", 35);
-		ironman.isMechant(false);
 		
 		// Les personnages vont dire bonjour
 		System.out.println(batman.ditBonjour());

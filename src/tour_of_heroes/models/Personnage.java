@@ -18,7 +18,6 @@ public class Personnage {
 	 */
 	private int age;
 	
-	private boolean isMechant;
 	
 	public Personnage() {}
 	
@@ -71,9 +70,5 @@ public class Personnage {
 		}
 		
 		return "Bonjour, je m'appelle " + this.nom + " et j'ai " + this.age + " ans";
-	}
-	
-	public void isMechant(boolean isMechant) {
-		this.isMechant = isMechant;
 	}
 }
