@@ -12,6 +12,7 @@ import tour_of_heroes.models.Gentil;
 import tour_of_heroes.models.Hybride;
 import tour_of_heroes.models.Mechant;
 import tour_of_heroes.models.Personnage;
+import tour_of_heroes.utils.CustomDate;
 
 /**
  * @author Aelion
@@ -91,6 +92,8 @@ public class App {
 				combat.hero().getNom() + 
 				" combat " + 
 				combat.mechant().getNom()
+				+ " Le " +
+				combat.getDate()
 		);
 		/**
 		 * Old school :
@@ -98,7 +101,9 @@ public class App {
 		 * combat.hero(batman);
 		 * combat.mechant(lexluthor);
 		 */
-
+		CustomDate uneDateDefinie = new CustomDate("yyyy-MM-dd", "dd-MM-Y");
+		uneDateDefinie.setDate("1968-04-30");
+		System.out.println("I was born at " + uneDateDefinie.asString() + " [" + uneDateDefinie.getDate() + "]");
 	}
 
 }

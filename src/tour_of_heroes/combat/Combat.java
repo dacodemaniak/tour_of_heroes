@@ -3,11 +3,14 @@
  */
 package tour_of_heroes.combat;
 
+import java.util.Date;
+
 import tour_of_heroes.exceptions.NoFighterException;
 import tour_of_heroes.exceptions.NoHeroException;
 import tour_of_heroes.exceptions.NoMechantException;
 import tour_of_heroes.helpers.Randomize;
 import tour_of_heroes.models.Personnage;
+import tour_of_heroes.utils.CustomDate;
 
 /**
  * @author Aelion
@@ -16,6 +19,13 @@ import tour_of_heroes.models.Personnage;
 public final class Combat {
 	private Personnage hero;
 	private Personnage mechant;
+	
+	private String date;
+	
+	public Combat() {
+		CustomDate date = new CustomDate();
+		this.date = date.asString();
+	}
 	
 	public Combat hero(Personnage personnage) {
 		this.hero = personnage;
@@ -37,6 +47,10 @@ public final class Combat {
 	
 	public Personnage mechant() {
 		return this.mechant;
+	}
+	
+	public String getDate() {
+		return this.date;
 	}
 	
 	public void run() throws Exception  {
