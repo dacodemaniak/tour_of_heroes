@@ -28,6 +28,7 @@ public class PersonnageRepository {
 	public PersonnageRepository() {
 		this.collection = new ArrayList<Personnage>();
 		
+		// Invoke private method to get personnage from DB
 		this.hydrateCollection();
 		
 	}
