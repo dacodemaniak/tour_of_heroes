@@ -3,6 +3,8 @@
  */
 package tour_of_heroes.models;
 
+import tour_of_heroes.helpers.GameConfig;
+
 /**
  * @author Aelion
  *
@@ -18,6 +20,7 @@ public abstract class Personnage {
 	 */
 	protected int age;
 	
+	protected int lifePoints = 150;
 	
 	public Personnage() {}
 	
@@ -62,6 +65,18 @@ public abstract class Personnage {
 	 */
 	public String getNom() {
 		return this.nom;
+	}
+	
+	public int getLifePoints() {
+		return this.lifePoints;
+	}
+	
+	public void iLoose() {
+		this.lifePoints = this.lifePoints - GameConfig.GAIN_POINT;
+	}
+	
+	public void iWin() {
+		this.lifePoints = this.lifePoints + GameConfig.GAIN_POINT;
 	}
 	
 	public abstract String ditBonjour();

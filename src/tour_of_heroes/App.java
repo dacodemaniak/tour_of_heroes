@@ -3,6 +3,9 @@
  */
 package tour_of_heroes;
 
+import java.util.ArrayList;
+import java.util.Optional;
+
 import tour_of_heroes.collection.PersonnageRepository;
 import tour_of_heroes.combat.Combat;
 import tour_of_heroes.exceptions.NoFighterException;
@@ -95,6 +98,16 @@ public class App {
 				+ " Le " +
 				combat.getDate()
 		);
+		// Les résultats
+		Optional<ArrayList<Personnage>> results = combat.getResult();
+		if (results.isEmpty()) {
+			System.out.println("Pas de gagnant, pas de perdant");
+		} else {
+			ArrayList<Personnage> winnerAndLooser = results.get();
+			System.out.println(winnerAndLooser.get(0).getNom() + " wins ! " + winnerAndLooser.get(0).getLifePoints());
+			System.out.println(winnerAndLooser.get(1).getNom() + " looses ! " + winnerAndLooser.get(1).getLifePoints());
+		}
+		
 		/**
 		 * Old school :
 		 * Combat combat = new Combat();
