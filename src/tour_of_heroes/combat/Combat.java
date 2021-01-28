@@ -87,10 +87,8 @@ public final class Combat {
 	}
 	
 	public Optional<ArrayList<Personnage>> getResult() {
-		ArrayList<Personnage> results = null;
-		System.out.println(winner != null ? "Un combat" : "Pas de combat");
 		if (winner != null) {
-			results = new ArrayList<Personnage>();
+			ArrayList<Personnage> results = new ArrayList<Personnage>();
 			results.add(winner);
 			results.add(looser);
 			return Optional.of(results);
