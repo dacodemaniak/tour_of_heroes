@@ -43,80 +43,10 @@ public class App {
 	public App() {
 		PersonnageRepository personnages = new PersonnageRepository();
 		
-		// Créer un premier personnage
-		Personnage batman = new Gentil("Batman", 45);
-		personnages.addPersonnage(batman);
-		
-		// Créer un autre personnage
-		Personnage superman = new Gentil("Superman", 25);
-		personnages.addPersonnage(superman);
-		
-		// Création de Joker
-		Personnage joker = new Mechant("Joker", 99);
-		personnages.addPersonnage(joker);
-		
-		// Créer IronMan
-		Personnage lexluthor = new Mechant("Lex Luthor", 75);
-		
-		personnages.addPersonnage(lexluthor);
-		personnages.addPersonnage(lexluthor);
-		
-		System.out.println(personnages);
-		
-		personnages.addPersonnage(new Gentil("ironman", 45));
-		
-		
 		// Tous les personnages vont dire bonjour
 		for (Personnage personnage : personnages.getCollection()) {
 			System.out.println(personnage.ditBonjour());
 		}
-		
-		Combat combat = new Combat()
-				.hero(batman)
-				.mechant(lexluthor);
-		
-
-
-		try {
-			combat.run();
-		} catch (NoFighterException e) {
-			combat.hero(superman);
-			combat.mechant(joker);
-		} catch (NoMechantException e) {
-			combat.mechant(lexluthor);
-		} catch (NoHeroException e) {
-			combat.hero(superman);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			System.out.println(e.getMessage());
-		}
-		
-		System.out.println(
-				combat.hero().getNom() + 
-				" combat " + 
-				combat.mechant().getNom()
-				+ " Le " +
-				combat.getDate()
-		);
-		// Les résultats
-		Optional<ArrayList<Personnage>> results = combat.getResult();
-		if (results.isEmpty()) {
-			System.out.println("Pas de gagnant, pas de perdant");
-		} else {
-			ArrayList<Personnage> winnerAndLooser = results.get();
-			System.out.println(winnerAndLooser.get(0).getNom() + " wins ! " + winnerAndLooser.get(0).getLifePoints());
-			System.out.println(winnerAndLooser.get(1).getNom() + " looses ! " + winnerAndLooser.get(1).getLifePoints());
-		}
-		
-		/**
-		 * Old school :
-		 * Combat combat = new Combat();
-		 * combat.hero(batman);
-		 * combat.mechant(lexluthor);
-		 */
-		CustomDate uneDateDefinie = new CustomDate("yyyy-MM-dd", "dd-MM-Y");
-		uneDateDefinie.setDate("1968-04-30");
-		System.out.println("I was born at " + uneDateDefinie.asString() + " [" + uneDateDefinie.getDate() + "]");
 	}
 
 }

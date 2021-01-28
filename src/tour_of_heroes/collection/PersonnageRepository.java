@@ -3,7 +3,15 @@
  */
 package tour_of_heroes.collection;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+
+import tour_of_heroes.database.MySQLConnector;
+import tour_of_heroes.models.Gentil;
+import tour_of_heroes.models.Mechant;
 import tour_of_heroes.models.Personnage;
 
 /**
@@ -19,6 +27,9 @@ public class PersonnageRepository {
 	
 	public PersonnageRepository() {
 		this.collection = new ArrayList<Personnage>();
+		
+		this.hydrateCollection();
+		
 	}
 	
 	/**
@@ -49,5 +60,39 @@ public class PersonnageRepository {
 	@Override
 	public String toString() {
 		return "La collection contient : " + this.collection.size() + " éléments";
+	}
+	
+	private void hydrateCollection() {
+		Connection connection = MySQLConnector.getInstance();
+		
+		// Créer une requête SQL pour récupérer les personnages
+		String sqlQuery = "SELECT id, nom, age, life_points, is_gentil FROM personnages;";
+		
+		try {
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(sqlQuery);
+			
+			// Parcourir le jeu de résultat pour récupérer les informations
+			while (rs.next()) {
+				Personnage personnage;
+				
+				if (rs.getInt("is_gentil") == 1) {
+					personnage = new Gentil(
+							rs.getString("nom"),
+							rs.getInt("age")
+					);
+				} else {
+					personnage = new Mechant(
+							rs.getString("nom"),
+							rs.getInt("age")
+					);
+				}
+				this.collection.add(personnage);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
